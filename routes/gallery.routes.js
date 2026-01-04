@@ -3,6 +3,7 @@ const multer = require("multer");
 const storage = require("../config/multer");
 const controller = require("../controllers/gallery.controller");
 const { default: ApiResponse } = require("../utils/apiresponseConstructor");
+const verifyToken = require("../middleware/verifytoken");
 
 const router = express.Router();
 const upload = multer({ storage });
@@ -40,7 +41,7 @@ router.post("/uploads", upload.any(), (req, res) => {
 
 router.get("/folders", controller.getFolders);
 router.get("/media/:folder", controller.getMediaByFolder);
-router.delete("/media", controller.deleteMedia);
-router.delete("/folder/:folder", controller.deleteFolder);
+router.delete("/media", verifyToken, controller.deleteMedia);
+router.delete("/folder/:folder", verifyToken, controller.deleteFolder);
 
 module.exports = router;
