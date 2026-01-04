@@ -7,12 +7,12 @@ const router = express.Router();
 const upload = multer({ storage });
 
 router.post("/uploads", upload.array("file"), (req, res) => {
-  res.json({
+  res.json(new ApiResponse({
     files: req.files.map(file => ({
       url: file.path,
       public_id: file.filename,
     })),
-  });
+  }, "Files uploaded successfully", true, 200));
 });
 
 router.get("/folders", controller.getFolders);
