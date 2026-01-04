@@ -3,13 +3,17 @@ const express = require("express");
 const cors = require("cors");
 
 const galleryRoutes = require("./routes/gallery.routes");
+const homeRoutes = require("./routes/home.routes"); // <-- import
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Routes
+app.use("/", homeRoutes);           // <-- home route
 app.use("/api/gallery", galleryRoutes);
 
-app.listen(8080, () => {
-  console.log("Server running on port 8080");
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

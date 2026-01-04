@@ -2,10 +2,10 @@
   "name": "GalleryUpload",
   "version": "1.0.0",
   "main": "app.js",
-  "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
-  },
+ "scripts": {
+  "start": "node app.js",
+  "dev": "nodemon app.js"
+},
   "packageManager": "pnpm@10.26.0",
   "dependencies": {
     "cloudinary": "^2.8.0",
