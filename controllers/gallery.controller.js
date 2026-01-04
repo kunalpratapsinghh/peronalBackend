@@ -38,12 +38,42 @@ exports.deleteMedia = async (req, res) => {
 exports.deleteFolder = async (req, res) => {
   const { folder } = req.params;
   try {
-    await cloudinary.api.delete_resources_by_prefix(folder);
+    const prefix = `${folder}/`
+    // 1. Delete images
+    await cloudinary.api.delete_resources_by_prefix(prefix, {
+      resource_type: "image",
+      type: "upload",
+    });
+    // 2. Delete videos
+    await cloudinary.api.delete_resources_by_prefix(prefix, {
+      resource_type: "video",
+      type: "upload",
+    });
+
+    // 3. Delete raw files (MOST COMMONLY MISSED)
+    await cloudinary.api.delete_resources_by_prefix(prefix, {
+      resource_type: "raw",
+      type: "upload",
+    });
+
+    // 4. Delete folder
     const result = await cloudinary.api.delete_folder(folder);
-    res.json(new ApiResponse(result, "Folder deleted successfully", true, 200));
+
+    res.json(
+      new ApiResponse(result, "Folder deleted successfully", true, 200)
+    );
+
   } catch (err) {
-    console.error(err);
-    res.status(500).json(new ApiResponse(null, err.message, false, 500));
+    console.error("Cloudinary delete folder error:", err);
+    const statusCode = err?.error?.http_code || 500;
+    const message =
+      err?.error?.message ||
+      err?.message ||
+      "Failed to delete folder";
+
+    res.status(statusCode).json(
+      new ApiResponse(null, message, false, statusCode)
+    );
   }
 };
 
