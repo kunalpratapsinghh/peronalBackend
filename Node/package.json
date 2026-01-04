@@ -1,0 +1,24 @@
+{
+  "name": "kunalnode",
+  "description": "A Node.js application for Kunal Kumar's portfolio",
+  "author": "Kunal Kumar <kunal.kumar@example.com>",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.15",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "graphql": "^16.11.0",
+    "mongoose": "^8.16.0",
+    "morgan": "~1.9.1",
+    "swagger-autogen": "^2.23.7",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
+  }
+}
