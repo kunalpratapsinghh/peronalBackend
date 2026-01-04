@@ -38,8 +38,9 @@ router.post("/uploads", upload.any(), (req, res) => {
   }
 });
 
-
 router.get("/folders", controller.getFolders);
 router.get("/media/:folder", controller.getMediaByFolder);
+router.delete("/media", controller.deleteMedia);
+router.delete("/folder/:folder", controller.deleteFolder);
 
 module.exports = router;
