@@ -1,14 +1,11 @@
 {
   "name": "GalleryUpload",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "packageManager": "pnpm@10.26.0",
   "dependencies": {
     "cloudinary": "^2.8.0",
@@ -16,7 +13,12 @@
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "multer": "^2.0.2",
-    "multer-storage-cloudinary": "^4.0.0",
+    "multer-storage-cloudinary": "^4.0.0"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.11"
+  },
+  "engines": {
+    "node": "22.x"
   }
 }
