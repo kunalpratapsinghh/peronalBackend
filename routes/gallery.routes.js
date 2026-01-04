@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const storage = require("../config/multer");
 const controller = require("../controllers/gallery.controller");
+const { default: ApiResponse } = require("../utils/apiresponseConstructor");
 
 const router = express.Router();
 const upload = multer({ storage });
